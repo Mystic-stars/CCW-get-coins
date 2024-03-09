@@ -1,0 +1,24 @@
+# 这个文件名可以自己取，比如 python-app.yml
+# 把这个文件放在你的仓库的 .github/workflows 目录下
+name: CCW自动签到+金币转移 # 这个是工作流的名字，可以自己改
+on: 
+  schedule:
+    # 此处是UTC时间，对应北京时间早八点
+    - cron : '00 00 * * *'
+  workflow_dispatch:
+jobs:
+  run-script: # 这个是任务的名字，可以自己改
+    runs-on: ubuntu-latest # 这个是运行环境，表示使用最新的 Ubuntu 系统
+    steps:
+      - name: Checkout repository # 这个是步骤的名字，表示从仓库中检出代码
+        uses: actions/checkout@v2 # 这个是使用的 GitHub Action，表示使用官方提供的 checkout 功能
+      - name: Set up Python # 这个是步骤的名字，表示设置 Python 环境
+        uses: actions/setup-python@v2 # 这个是使用的 GitHub Action，表示使用官方提供的 setup-python 功能
+        with:
+          python-version: '3.9' # 这个是参数，表示使用 Python 3.9 版本，你可以根据你的代码需要修改
+      - name: Install dependencies # 这个是步骤的名字，表示安装依赖包
+        run: | # 这个是运行的命令，表示使用 pip 安装 requests 和 re 包，你可以根据你的代码需要修改
+          python -m pip install --upgrade pip
+          pip install requests
+      - name: 运行主程序 # 这个是步骤的名字，表示运行你的 Python 代码
+        run: python main.py # 这个是运行的命令，表示运行你的 Python 代码文件，你可以根据你的实际文件名修改
