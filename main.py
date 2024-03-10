@@ -131,7 +131,7 @@ if 1==1:
             tokens = file.read().splitlines()
         give_proj = "0"
         if give_proj == "0":
-            give_proj = "65cb628c59e1f51c9dfcba88"
+            give_proj = "64b226d6416b4c13e613c2fa"
         givecoins_num = "0"
         url = "https://community-web.ccw.site/study-trade/trade/donate"
         give_all_num = 0
